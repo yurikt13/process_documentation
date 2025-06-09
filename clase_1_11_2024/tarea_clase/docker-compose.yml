@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  gitlab-v1:
+    image: gitlab/gitlab-ee:latest
+    ports:
+      - '80:80' #HTTP
+      - '443:443' #HTTPS
+      - '22:22'
+    container_name: gitlab-v1
+    volumes:
+      - C:/Users/YuriAlejandraMonroyB/Documents/gitlab/gitlab-config:/etc/gitlab
+      - C:/Users/YuriAlejandraMonroyB/Documents/gitlab/gitlab-logs:/var/log/gitlab
+      - C:/Users/YuriAlejandraMonroyB/Documents/gitlab/gitlab-data:/var/opt/gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://localhost'
+
+volumes:
+  gitlab-config:
+  gitlab-logs:
+  gitlab-data:

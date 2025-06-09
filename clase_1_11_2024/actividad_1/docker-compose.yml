@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3421:80
+  gestion-host:
+    image: mongo
+    container_name: gestion_host
+    volumes:
+      - C:\Users\YuriAlejandraMonroyB\Documents\gestion_host:/data/db
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123456789
+
+  azon-ldb:
+    container_name: azon-ldb
+    build:
+      context: ./azon-ldb
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+  auth-service:
+    container_name: auth-service
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+
+    

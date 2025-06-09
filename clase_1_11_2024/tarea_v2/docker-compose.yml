@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  gitlab-v2
+    image: gitlab/gitlab-ee:17.4
+    ports:
+      - 8080:80 #HTTP
+      - 8443:443 #HTTPS
+    container_name: gitlab-v2
+    volumes:
+      - gitlab-config:/etc/gitlab
+      - gitlab-logs:/var/log/gitlab
+      - gitlab-data:/var/opt/gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.example.com'
+
+volumes:
+  gitlab-config:
+  gitlab-logs:
+  gitlab-data:

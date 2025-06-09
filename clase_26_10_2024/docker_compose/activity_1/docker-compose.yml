@@ -1,0 +1,16 @@
+version: "3.7"
+
+services: #para definir todos mis servicios
+  nginx-activity4: #esto lo definimos nosotros
+    image: nginx-activ3_2
+    ports:
+      - 8080:80
+    container_name: nginx_act1_comp
+  
+  nginx-activity5:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8082:80
+    container_name: nginx_act2_comp
